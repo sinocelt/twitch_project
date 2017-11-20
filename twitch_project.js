@@ -1,3 +1,7 @@
+// Note when this program was originally written, it was connected to a user named thebuddha3. Since then, that user no longer exists.
+// This program had to be changed to remove all references to that user. As a quick note, thebuddha3 was associated with
+// promise5, promise6, and ourContent3
+
 $(document).ready(function() {
 
   //determine if kaitlyn is online or not
@@ -31,7 +35,6 @@ $(document).ready(function() {
     }
   }); //end of ajax 1b. end of promise 2
 
-
   //determine if freecodecamp is online or not
   var freecodecampOnline = "";
   var freecodecampStatus = "";
@@ -63,39 +66,37 @@ $(document).ready(function() {
     }
   }); //end of ajax 2b. End of promise 4
 
-
-  //determine if thebuddha3 is online or not
-  var thebuddha3Online = "";
-  var thebuddha3Status = "";
-  var thebuddha3LogoLocation = "";
-
-  var promise5 = $.ajax({
-    url: "https://api.twitch.tv/kraken/streams/thebuddha3/?client_id=il34xta96fbc6y37enbp1nedjjof0x",
-    dataType: "jsonp",
-    success: function(dataC) {
-      //if stream status is null, that means the user is offline
-      if (dataC["stream"] === null) {
-        thebuddha3Online = false;
-      } else {
-        thebuddha3Online = true;
-      }
-    }
-  }); //end of ajax 3a. End of promise 5
-
-
-  //get thebuddha3's status and logo location
-  var promise6 = $.ajax({
-    url: "https://api.twitch.tv/kraken/channels/thebuddha3/?client_id=il34xta96fbc6y37enbp1nedjjof0x",
-    dataType: "jsonp",
-    success: function(data3) {
-      //get thebuddha3's logo URL
-      thebuddha3LogoLocation = data3["logo"];
-
-      //get thebuddha3's status
-      thebuddha3Status = data3["status"];
-    }
-  }); //end of ajax 3b. End of promise 6
-
+  // //determine if thebuddha3 is online or not
+  // var thebuddha3Online = "";
+  // var thebuddha3Status = "";
+  // var thebuddha3LogoLocation = "";
+  //
+  // var promise5 = $.ajax({
+  //   url: "https://api.twitch.tv/kraken/streams/thebuddha3/?client_id=il34xta96fbc6y37enbp1nedjjof0x",
+  //   dataType: "jsonp",
+  //   success: function(dataC) {
+  //     //if stream status is null, that means the user is offline
+  //     if (dataC["stream"] === null) {
+  //       thebuddha3Online = false;
+  //     } else {
+  //       thebuddha3Online = true;
+  //     }
+  //   }
+  // }); //end of ajax 3a. End of promise 5
+  //
+  //
+  // //get thebuddha3's status and logo location
+  // var promise6 = $.ajax({
+  //   url: "https://api.twitch.tv/kraken/channels/thebuddha3/?client_id=il34xta96fbc6y37enbp1nedjjof0x",
+  //   dataType: "jsonp",
+  //   success: function(data3) {
+  //     //get thebuddha3's logo URL
+  //     thebuddha3LogoLocation = data3["logo"];
+  //
+  //     //get thebuddha3's status
+  //     thebuddha3Status = data3["status"];
+  //   }
+  // }); //end of ajax 3b. End of promise 6
 
   //determine if esl_sc2 is online or not
   var esl_sc2Online = "";
@@ -114,7 +115,6 @@ $(document).ready(function() {
       }
     }
   }); //end of ajax 4a. End of promise 7
-
 
   //get esl_sc2's status and logo location
   var promise8 = $.ajax({
@@ -252,13 +252,14 @@ $(document).ready(function() {
   }
 
   //for some reason I must call this before showAllUsers()
-  $("#button1").click(showAllUsers);
+  $("#allUsersButton").click(showAllUsers);
 
   function showAllUsers() {
     clearAllData();
 
     //.when calls all the ajax's and .then does a function in the order I want. If I didn't have .when and .then, often I could not predict which items would go in what order if I had multiple ajax calls.
-    $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    // $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    $.when(promise1, promise2, promise3, promise4, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
       //************************************************************************************
       //now for kaitlyn
       if ($(window).width() > 800) {
@@ -309,27 +310,27 @@ $(document).ready(function() {
 
       //************************************************************************************
       //now for thebuddha3
-      if ($(window).width() > 800) {
-        $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>"); //.css("align","center");
-      } else {
-        $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>"); //.css("align","left");
-      }
-      if (thebuddha3Online == true) {
-        $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is online </strong>");
-        if ($(window).width() > 800) {
-          $("#ourContent3").append(thebuddha3Status).css("background-color", "LightGreen");
-        } else {
-          $("#ourContent3").css("background-color", "LightGreen");
-        }
-      } else {
-        $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is offline </strong>");
-        if ($(window).width() > 800) {
-          $("#ourContent3").append(thebuddha3Status).css("background-color", "#FF7B77");
-        } else {
-          $("#ourContent3").css("background-color", "#FF7B77");
-        }
-      }
-      $("#ourContent3").css("text-align", "center");
+      // if ($(window).width() > 800) {
+      //   $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>"); //.css("align","center");
+      // } else {
+      //   $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>"); //.css("align","left");
+      // }
+      // if (thebuddha3Online == true) {
+      //   $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is online </strong>");
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append(thebuddha3Status).css("background-color", "LightGreen");
+      //   } else {
+      //     $("#ourContent3").css("background-color", "LightGreen");
+      //   }
+      // } else {
+      //   $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is offline </strong>");
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append(thebuddha3Status).css("background-color", "#FF7B77");
+      //   } else {
+      //     $("#ourContent3").css("background-color", "#FF7B77");
+      //   }
+      // }
+      // $("#ourContent3").css("text-align", "center");
       //************************************************************************************
       //now for esl_sc2
       if ($(window).width() > 800) {
@@ -428,13 +429,14 @@ $(document).ready(function() {
   } //end of showAllUsers()
 
 
-  $("#button2").click(onlyOnlineUsers);
+  $("#onlineUsersButton").click(onlyOnlineUsers);
 
   function onlyOnlineUsers() {
     clearAllData();
 
     //.when calls all the ajax's and .then does a function in the order I want. If I didn't have .when and .then, often I could not predict which items would go in what order if I had multiple ajax calls.
-    $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    // $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    $.when(promise1, promise2, promise3, promise4, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
       //************************************************************************************
 
       //#1 kaitlyn
@@ -489,27 +491,27 @@ $(document).ready(function() {
 
       //#3 thebuddha3
       //************************************************************************************
-      if (thebuddha3Online == true) {
-
-        if ($(window).width() > 800) {
-          $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>");
-        } else {
-          $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>");
-        }
-
-        $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is online </strong>");
-
-        if ($(window).width() > 800) {
-          $("#ourContent3").append(thebuddha3Status).css("background-color", "LightGreen");
-        } else {
-          $("#ourContent3").css("background-color", "LightGreen");
-        }
-        $("#ourContent3").css("text-align", "center");
-      }
-      //hide element since user is offline
-      else {
-        $("#ourContent3").hide();
-      }
+      // if (thebuddha3Online == true) {
+      //
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>");
+      //   } else {
+      //     $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>");
+      //   }
+      //
+      //   $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is online </strong>");
+      //
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append(thebuddha3Status).css("background-color", "LightGreen");
+      //   } else {
+      //     $("#ourContent3").css("background-color", "LightGreen");
+      //   }
+      //   $("#ourContent3").css("text-align", "center");
+      // }
+      // //hide element since user is offline
+      // else {
+      //   $("#ourContent3").hide();
+      // }
       //*************************************************************************************
 
       //#4 esl_sc2
@@ -614,11 +616,12 @@ $(document).ready(function() {
     }); //end of .when
   } //end of onlyOnlineUsers()
 
-  $("#button3").click(onlyOfflineUsers);
+  $("#offlineUsersButton").click(onlyOfflineUsers);
 
   //onlyOfflineUsers() and onlyOnlineUsers() have only a few differences
   function onlyOfflineUsers() {
-    $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    // $.when(promise1, promise2, promise3, promise4, promise5, promise6, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
+    $.when(promise1, promise2, promise3, promise4, promise7, promise8, promise8, promise10, promise11, promise12, promise13, promise14).then(function() {
       //************************************************************************************
       clearAllData();
 
@@ -674,27 +677,27 @@ $(document).ready(function() {
 
       //#3 thebuddha3
       //************************************************************************************
-      if (thebuddha3Online == false) {
-
-        if ($(window).width() > 800) {
-          $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>");
-        } else {
-          $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>");
-        }
-
-        $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is offline </strong>");
-
-        if ($(window).width() > 800) {
-          $("#ourContent3").append(thebuddha3Status).css("background-color", "#FF7B77");
-        } else {
-          $("#ourContent3").css("background-color", "#FF7B77");
-        }
-        $("#ourContent3").css("text-align", "center");
-      }
-      //hide element since user is online
-      else {
-        $("#ourContent3").hide();
-      }
+      // if (thebuddha3Online == false) {
+      //
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='80' align='center'>");
+      //   } else {
+      //     $("#ourContent3").append("<img src='" + thebuddha3LogoLocation + "' class='img-circle' width='40' align='left'>");
+      //   }
+      //
+      //   $("#ourContent3").append("<strong>&nbsp; &nbsp;<a href='https://www.twitch.tv/thebuddha3' target='_blank'> thebuddha3</a> is offline </strong>");
+      //
+      //   if ($(window).width() > 800) {
+      //     $("#ourContent3").append(thebuddha3Status).css("background-color", "#FF7B77");
+      //   } else {
+      //     $("#ourContent3").css("background-color", "#FF7B77");
+      //   }
+      //   $("#ourContent3").css("text-align", "center");
+      // }
+      // //hide element since user is online
+      // else {
+      //   $("#ourContent3").hide();
+      // }
       //*************************************************************************************
 
       //#4 esl_sc2
