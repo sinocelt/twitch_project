@@ -1,0 +1,20 @@
+button {
+  float: right;
+  font-size: 14px;
+}
+
+/*simple animation for hovering over button*/
+button:hover {
+  padding: 0.5px 30px;
+  background-color: light-green;
+}
+
+#allUsersButton {
+  background-color:grey;
+}
+#onlineUsersButton {
+   background-color:LightGreen;
+}
+#offlineUsersButton {
+  background-color:#FF7B77;
+}
