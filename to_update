@@ -1,0 +1,4 @@
+As of 14 May 2020:
+* My code using the Twitch API v3 no longer works.
+* Twitch is past v5, and additionally it now requires using Oath.
+* See https://dev.twitch.tv/docs/api/
